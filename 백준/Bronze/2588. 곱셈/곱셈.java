@@ -50,6 +50,7 @@ public class Main {
         //A, B 입력받기 (line으로 구분해서 입력됨)
         A = Integer.parseInt(br.readLine());
         B = Integer.parseInt(br.readLine());
+        br.close();
 
         // B의 각 자릿수 값 계산해서 배열에 저장
         digitNumOfB = findDigitNum(B, numLength);

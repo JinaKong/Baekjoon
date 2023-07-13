@@ -18,21 +18,30 @@ public class Main {
         num3 = Integer.parseInt(st.nextToken());
         br.close();
 
+        /*
         if(num1==num2){
             if(num2==num3)
                 reward = 10000 + num1*1000;
-            else reward = 1000 + num1*100;
+            else reward = 1000 + num1*100;  // 아래에서 합침
         }
         else if (num1==num3){
-            reward = 1000 + num1*100;
+            reward = 1000 + num1*100;       // 아래에서 합침
+        }
+         */
+        if(num1==num2 || num1==num3){
+            if(num2==num3)
+                reward = 10000 + num1*1000;
+            else reward = 1000 + num1*100;  // 위의 두 조건문 합침
         }
         else if (num2==num3){
             reward = 1000 + num2*100;
         }
         else{
-            // 셋 중 가장 큰 수 찾기
+            /*
             int MAX = num1>num2 ? num1:num2;
             MAX = MAX>num3 ? MAX:num3;
+             */
+            int MAX = Math.max(num1, Math.max(num2, num3)); //Math 라이브러리 사용
 
             reward = MAX*100;
         }

@@ -4,26 +4,25 @@ import java.util.StringTokenizer;
 public class Main {
 
     static BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-    static BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
+    //static BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
 
     public static void main(String[] args) throws IOException {
 
         int N = 0;  // 테스트케이스의 개수
         String input[];
         int sum = 0;
+        StringBuilder sb = new StringBuilder();
 
-        /*
-        입력
-         */
         N = Integer.parseInt(br.readLine());
         for(int i=0; i<N; i++){
             input = br.readLine().split(" ");
             sum = Integer.parseInt(input[0]) + Integer.parseInt(input[1]);
-            bw.write(sum +"\n");
+            //bw.write(sum +"\n");
+
+            sb.append(sum).append("\n");
         }
         br.close();
 
-        bw.flush();
-        bw.close();
+        System.out.println(sb);
     }
 }

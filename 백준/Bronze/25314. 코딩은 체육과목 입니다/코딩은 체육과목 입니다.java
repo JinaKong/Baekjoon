@@ -20,9 +20,14 @@ public class Main {
         출력
          */
         int result = N/4;
+
+        StringBuilder sb = new StringBuilder(); // StringBuilder 사용
         for(int i=0; i < result ; i++){
-            System.out.print("long ");
+            //System.out.print("long ");
+            sb.append("long ");
         }
-        System.out.println("int");
+        //System.out.println("int");
+        sb.append("int");
+        System.out.println(sb);
     }
 }

@@ -6,15 +6,9 @@ public class Main {
 
     public static void main(String[] args) throws IOException {
 
-        char c;         // 입력 문자 (char)
-
-        c = br.readLine().charAt(0);    // String으로 입력된 단일 문자를 char로 변경
-        br.close();
-        
-        
-        // (int)를 붙여 아스키코드 값으로 변환해서 출력
-        System.out.println( (int)c );   
-        
+        int input = System.in.read();   // System.in.read()로 문자 하나 입력 받기
+                                        // 아스키코드로 저장됨
+        System.out.println(input);  // 출력
 
     }
 }

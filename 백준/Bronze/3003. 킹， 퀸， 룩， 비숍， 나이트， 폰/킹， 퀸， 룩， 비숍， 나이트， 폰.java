@@ -9,17 +9,15 @@ public class Main {
         // 입력받기
         String input = br.readLine();
         String pieces[] = input.split(" ");
-        
+
+        // 각 체스말의 수 배열로 저장
+        int num[] = {1,1,2,2,2,8};    
+
         // 출력
         StringBuilder sb= new StringBuilder();
-
-        sb.append(1-Integer.parseInt(pieces[0])).append(" ");
-        sb.append(1-Integer.parseInt(pieces[1])).append(" ");
-        sb.append(2-Integer.parseInt(pieces[2])).append(" ");
-        sb.append(2-Integer.parseInt(pieces[3])).append(" ");
-        sb.append(2-Integer.parseInt(pieces[4])).append(" ");
-        sb.append(8-Integer.parseInt(pieces[5])).append(" ");
-
+        for(int i=0; i<6; i++){
+            sb.append(num[i]-Integer.parseInt(pieces[i])).append(" ");
+        }
         System.out.println(sb);
     }
 }

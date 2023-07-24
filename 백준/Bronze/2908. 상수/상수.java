@@ -12,32 +12,23 @@ public class Main {
         String B[] = input[1].split("");
 
 
-        // A,B 중 역수가 큰 수를 찾기
-        char result = 'A';  // 우선 A의 역수가 크다고 놓고
-        
-        // B의 역수가 더 크다면 변경
-        if (Integer.parseInt(A[2]) < Integer.parseInt(B[2])){
-            result = 'B';
-        }
-        else if(Integer.parseInt(A[2]) == Integer.parseInt(B[2])
-                && Integer.parseInt(A[1]) < Integer.parseInt(B[1])){
-            result = 'B';
-        }
-        else if (Integer.parseInt(A[2]) == Integer.parseInt(B[2])
-                && Integer.parseInt(A[1]) == Integer.parseInt(B[1])
-                && Integer.parseInt(A[0]) < Integer.parseInt(B[0])){
-            result = 'B';
-        }
+        // A, B를 역수로 만들기
+        int reversedA = Integer.parseInt(A[2])*100
+                + Integer.parseInt(A[1])*10
+                + Integer.parseInt(A[0]);
+
+        int reversedB = Integer.parseInt(B[2])*100
+                + Integer.parseInt(B[1])*10
+                + Integer.parseInt(B[0]);
 
         
         // 출력
         StringBuilder sb = new StringBuilder();
-        if(result == 'A'){
-           sb.append(A[2]).append(A[1]).append(A[0]);
-        }
-        else
-            sb.append(B[2]).append(B[1]).append(B[0]);
 
+        if(reversedA > reversedB )
+            sb.append(reversedA);
+        else
+            sb.append(reversedB);
         System.out.println(sb);
 
     }

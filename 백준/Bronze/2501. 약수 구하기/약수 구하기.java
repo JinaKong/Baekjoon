@@ -24,23 +24,16 @@ public class Main {
         int count = 0;      // 약수의 개수
 
         for(int i = 1; i <= num; i++){
-            if(count < k){
-                // k번째 약수를 찾을 때까지 반복
-
                 if(num % i == 0){
-                    // i가 약수이면
-                    result = i;
-                    count++;
+                    count++;           // i가 약수면 count
+                    if(count == k)  result = i;     // k번째 약수면 저장
                 }
-            }
         }
 
         /*
         출력
          */
-        if(count < k)     // 약수의 개수가 적어서 k번째 약수가 없을 경우
-            System.out.println(0);  //0 출력
-        else
-            System.out.println(result); // 그렇지 않으면 result 출력
+        System.out.println(result);
+        // 약수의 개수가 적어서 k번째 약수가 없다면 기본값인 0이 출력됨
     }
 }

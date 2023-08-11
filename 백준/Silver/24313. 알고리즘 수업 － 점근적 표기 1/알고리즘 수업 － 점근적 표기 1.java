@@ -5,33 +5,29 @@ public class Main {
     public static void main(String[] args) throws IOException {
 
         BufferedReader br = new BufferedReader( new InputStreamReader(System.in));
-        int a1, a0;
-        int c;
-        int n0;
 
         /*
         입력
          */
         String input = br.readLine();
-        a1 = Integer.parseInt(input.split(" ")[0]);
-        a0 = Integer.parseInt(input.split(" ")[1]);
+        int a1 = Integer.parseInt(input.split(" ")[0]);
+        int a0 = Integer.parseInt(input.split(" ")[1]);
 
-        c = Integer.parseInt(br.readLine());
-        n0 = Integer.parseInt(br.readLine());
+        int c = Integer.parseInt(br.readLine());
+        int n0 = Integer.parseInt(br.readLine());
+
+        /*
+        입력받은 값으로 f(n)과 g(n) 계산
+         */
+        int Fn = a1 * n0 + a0;
+        int Gn = c * n0;
 
         /*
         출력
          */
-        int fn, gn;
-        for( int i = n0; i <= n0*n0; i++) {
-            fn = a1 * i + a0;
-            gn = c * i;
-
-            if (fn > gn || a1 > c) {
-                System.out.println("0");
-                return;
-            }
-        }
-        System.out.println("1");
+        if (Fn > Gn || a1 > c)  // a0이 음수일 수 있으므로 'a1 > c' 도 비교!!
+            System.out.println("0");
+        else
+            System.out.println("1");
     }
 }

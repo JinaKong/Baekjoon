@@ -36,9 +36,12 @@ int solution(vector<vector<int>> jobs) {
         
         // 최소힙이 비어있지 않은 경우
         if (!pq.empty()) {
-            current_time += pq.top()[1];    // 현재 시간에 job 소요 시간 더함 (해당 job 실행)
-            total_time += current_time - pq.top()[0];   // 지금까지 대기한 시간 total_time에 추가
-            pq.pop();   // 작업 끝났으니 job 삭제
+            // 최소힙의 top의 job 가져오기
+            vector<int> job = pq.top();
+            pq.pop();
+            
+            current_time += job[1];    // 현재 시간에 job 소요 시간 더함 (해당 job 실행)
+            total_time += current_time - job[0];   // 지금까지 대기한 시간 total_time에 추가
         }
         // 최소힙이 비어있는 경우
         else

@@ -4,7 +4,7 @@
 
 using namespace std;
 
-// 문자열의 알파벳 빈도수를 계산하여 반환하는 메소드
+// 문자열의 알파벳 빈도수를 계산하여 반환하는 함수
 vector<int> getFrequency(const string& str) {
     vector<int> frequency(26, 0);   // 각 알파벳의 빈도수 저장하는 벡터
     
@@ -12,6 +12,30 @@ vector<int> getFrequency(const string& str) {
         frequency[c - 'A']++;
     }
     return frequency;
+}
+
+// 두 문자열이 비슷한지 검사하는 함수
+bool areStringsSimilar(const string& base, const string& s) {
+    int baseLength = base.size();
+    int sLength = s.size();
+    
+    vector<int> baseFrequency = getFrequency(base);
+    vector<int> sFrequency = getFrequency(s);
+
+    int commonCount = 0;
+    for (int j = 0; j < 26; j++) {
+        commonCount += min(baseFrequency[j], sFrequency[j]);
+    }
+    
+    if (baseLength == sLength) {
+        return (commonCount == baseLength || commonCount == baseLength - 1);
+    } else if (baseLength == sLength + 1) {
+        return (commonCount == baseLength - 1);
+    } else if (baseLength == sLength - 1) {
+        return (commonCount == baseLength);
+    }
+    
+    return false;
 }
 
 int main() {
@@ -28,43 +52,13 @@ int main() {
     cin >> n;
     cin >> base; 
 
-    // 첫번째 단어의 알파벳 빈도수
-    vector<int> baseFrequency = getFrequency(base);
-    int baseLength = base.size();   // 첫번째 단어의 길이
-
     for (int i = 0; i < n - 1; i++) {
         // 비교할 단어 입력받기
         cin >> s;
-        int sLength = s.size();
-
-        // s의 알파벳 빈도수 계산
-        vector<int> sFrequency = getFrequency(s);
         
-        // 두 단어의 각 알파벳 빈도수의 공통 개수를 commonCount로 카운트
-        int commonCount = 0;
-        for (int j = 0; j < 26; j++) {
-            commonCount += min(baseFrequency[j], sFrequency[j]);
-        }
-        
-        //비슷한 단어로 판단되면 result +1
-        //두 단어의 길이가 같으면
-        if (baseLength == sLength) {
-            //commonCount가 첫번째 문자열의 길이와 같거나 1 작아야 한다
-            if (commonCount == baseLength || commonCount == baseLength - 1) {
-                result++;
-            }
-        //입력받은 문자열이 1 길면
-        } else if (baseLength == sLength + 1) {
-            //commonCount가 첫번째 문자열의 길이보다 1 작아야 한다
-            if(commonCount == baseLength - 1){
-                result++;
-            }
-        //입력받은 문자열이 1 작으면
-        } else if (baseLength == sLength - 1) {
-            //commonCount가 첫번째 문자열의 길이와 같아야 한다
-            if(commonCount == baseLength){
-                result++;
-            }
+        // 두 단어가 비슷한지 검사하여 결과를 업데이트
+        if (areStringsSimilar(base, s)) {
+            result++;
         }
     }
 

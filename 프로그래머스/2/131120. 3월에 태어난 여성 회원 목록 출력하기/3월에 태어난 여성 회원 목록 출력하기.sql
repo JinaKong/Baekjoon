@@ -1,0 +1,14 @@
+-- 코드를 입력하세요
+SELECT
+MEMBER_ID, MEMBER_NAME, GENDER, 
+date_format(DATE_OF_BIRTH, '%Y-%m-%d') AS DATE_OF_BIRTH # 날짜 형식 1993-03-16
+
+FROM 
+MEMBER_PROFILE 
+
+WHERE
+DATE_OF_BIRTH LIKE '%-03-%' AND # 생일이 3월
+GENDER = 'W' AND
+TLNO IS NOT NULL # 전화번호가 NULL이면 출력대상에서 제외
+
+ORDER BY MEMBER_ID ASC;

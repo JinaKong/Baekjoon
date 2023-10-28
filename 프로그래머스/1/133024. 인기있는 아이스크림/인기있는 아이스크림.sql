@@ -1,0 +1,10 @@
+-- 코드를 입력하세요
+# 맛 출력
+# 총주문량 DESC, 출하번호 ASC
+SELECT 
+FLAVOR
+
+FROM 
+FIRST_HALF
+
+ORDER BY TOTAL_ORDER DESC, SHIPMENT_ID ASC

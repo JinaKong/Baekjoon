@@ -1,0 +1,4 @@
+-- 이름이 없는 채로 들어온 동물의 ID
+SELECT ANIMAL_ID
+FROM ANIMAL_INS
+WHERE ISNULL(NAME)
